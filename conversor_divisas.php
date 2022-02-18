@@ -8,7 +8,6 @@
     <title>Conversor de divisas</title>
 </head>
 <body>
-      
      <h1>
        Mi conversor
        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calculator" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -46,71 +45,74 @@
         </select>
         <button type="submit" name='submit'>Calcular</button>
       </form>
-      <?php
-        if(isset($_POST['submit'])){
-          $value = $_POST['value'];
-          $currency1 = $_POST['currency1'];
-          $currency2 = $_POST['currency2'];
-         switch ($currency1) {
-           case 'dolar':
-              echo '<p> $'.$value.' USD</p>';
-              echo '<p> = </p>';
-              if($currency2=='euro'){
-                $value = $value*0.88;
+      <div id="output">
+        <?php
+          if(isset($_POST['submit'])){
+            $value = $_POST['value'];
+            $currency1 = $_POST['currency1'];
+            $currency2 = $_POST['currency2'];
+          switch ($currency1) {
+            case 'dolar':
+                echo '<p> $'.$value.' USD</p>';
+                echo '<p> = </p>';
+                if($currency2=='euro'){
+                  $value = $value*0.88;
+                  echo '<p> €'.$value.' EUR</p>';
+                }elseif ($currency2=='dolar') {
+                  break;
+                }elseif ($currency2=='yen') {
+                  $value = $value*115.43;
+                  echo '<p> ¥'.$value.' JPY</p>';
+                }else{
+                  $value = $value*0.73;
+                  echo '<p> £'.$value.' GBP</p>';
+                }
+              break;
+            case 'euro':
                 echo '<p> €'.$value.' EUR</p>';
-              }elseif ($currency2=='dolar') {
-                break;
-              }elseif ($currency2=='yen') {
-                $value = $value*115.43;
-                echo '<p> ¥'.$value.' JPY</p>';
-              }else{
-                $value = $value*0.73;
-                echo '<p> £'.$value.' GBP</p>';
-              }
-             break;
-           case 'euro':
-              echo '<p> €'.$value.' EUR</p>';
+                echo '<p> = </p>';
+                if($currency2 == 'dolar'){
+                  $value = $value*1.14;
+                  echo '<p> $'.$value.' USD</p>';
+                }elseif ($currency2=='yen') {
+                  $value = $value*130.60;
+                  echo '<p> ¥'.$value.' JPY</p>';
+                }else{
+                  $value = $value*0.83;
+                  echo '<p> £'.$value.' GBP</p>';
+                }
+              break;
+            case 'yen':
+              echo '<p> ¥'.$value.' JPY</p>';
               echo '<p> = </p>';
               if($currency2 == 'dolar'){
-                $value = $value*1.14;
+                $value = $value*0.0087;
                 echo '<p> $'.$value.' USD</p>';
-              }elseif ($currency2=='yen') {
-                $value = $value*130.60;
-                echo '<p> ¥'.$value.' JPY</p>';
+              }elseif ($currency2=='euro'){
+                $value = $value*0.0076;
+                echo '<p> €'.$value.' EUR</p>';
               }else{
-                $value = $value*0.83;
+                $value = $value*0.0064;
                 echo '<p> £'.$value.' GBP</p>';
               }
-             break;
-           case 'yen':
-            echo '<p> ¥'.$value.' JPY</p>';
-            echo '<p> = </p>';
-            if($currency2 == 'dolar'){
-              $value = $value*0.0087;
-              echo '<p> $'.$value.' USD</p>';
-            }elseif ($currency2=='euro'){
-              $value = $value*0.0076;
-              echo '<p> €'.$value.' EUR</p>';
-            }else{
-              $value = $value*0.0064;
-              echo '<p> £'.$value.' GBP</p>';
-            }
-             break;
-           case 'libra':
-            if($currency2 == 'dolar'){
-              $value = $value*1.36;
-              echo '<p> $'.$value.' USD</p>';
-            }elseif ($currency2=='euro'){
-              $value = $value*1.20;
-              echo '<p> €'.$value.' EUR</p>';
-            }else{
-              $value = $value*156.68;
-              echo '<p> ¥'.$value.' JPY</p>';
-            }
-             break;
-         }
-        }
-      ?>
+              break;
+            case 'libra':
+              if($currency2 == 'dolar'){
+                $value = $value*1.36;
+                echo '<p> $'.$value.' USD</p>';
+              }elseif ($currency2=='euro'){
+                $value = $value*1.20;
+                echo '<p> €'.$value.' EUR</p>';
+              }else{
+                $value = $value*156.68;
+                echo '<p> ¥'.$value.' JPY</p>';
+              }
+              break;
+          }
+          }
+        ?>
+      </div>
+      
       <script>
         const svg = document.querySelector('#switch')
         const currency1 = document.querySelector('#currency1')
