@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de divisas</title>
     <link rel='stylesheet' href='https://necolas.github.io/normalize.css/8.0.1/normalize.css'>
+    <link rel="stylesheet" href="./style/divisas.css">
 </head>
 <body>
+  <main>
      <h1>
        Mi conversor
-       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calculator" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calculator" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1C6DD0" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <rect x="4" y="3" width="16" height="18" rx="2" />
         <rect x="8" y="7" width="8" height="3" rx="1" />
@@ -113,7 +115,7 @@
           }
         ?>
       </div>
-      
+  </main>
       <script>
         const svg = document.querySelector('#switch')
         const currency1 = document.querySelector('#currency1')
